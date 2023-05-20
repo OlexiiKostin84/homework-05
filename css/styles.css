@@ -559,6 +559,10 @@ padding: 32px 0
   width: calc((100% - 48px) / 3);
 }
 
+.production-cards-item:hover .overlay {
+  transform: translateY(0%);
+}
+
 .production-cards-link {
   display: block;
   width: 360px;
@@ -589,17 +593,24 @@ padding: 32px 0
 
 .production-thumb {
   position: relative;
+  overflow: hidden;
 }
 
 .overlay {
   position: absolute;
   top: 0;
   left: 0;
+  transform: translateY(100%);
+  
   width: 100%;
   height: 100%;
   padding: 40px 32px;
   background-color: var(--primary-brand);
   mix-blend-mode: normal;
+  transition-property: transform  ;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  
 }
 
 .overlay-text {
@@ -701,8 +712,10 @@ padding: 32px 0
   position: fixed;
   top: 0;
   left: 0;
+  
   width: 100%;
   height: 100%;
+  
   background-color: var(--modal-overlay);
 
   transition: opacity 250ms, visibility 250ms;
@@ -721,13 +734,23 @@ padding: 32px 0
   
   background-color: var(--modal-background);
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
-  transition: opacity 400ms ease-in, transform 400ms ease-in;
+  transition: opacity 250ms, transform 250ms;
+}
+
+.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .backdrop.is-hidden.modal {
   opacity: 0;
   transform: translateX(-50%) translateY(-80%);
 }
+
+/* .no-scroll {
+  overflow: hidden;
+} */
 
 .modal-close-button {
   position: absolute;
@@ -752,16 +775,7 @@ padding: 32px 0
   fill: currentColor;
 }
 
-.close-button:hover {
-  background-color: var(--dark);
+.modal-close-button:active {
+  background-color: var(--pressed-state);
 }
 
-.is-hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.no-scroll {
-  overflow: hidden;
-}
