@@ -585,7 +585,7 @@ padding: 32px 0
   overflow: hidden;
 }
 
-.overlay {
+/* .overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -600,7 +600,7 @@ padding: 32px 0
   transition-duration: 250ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   
-}
+} */
 
 .overlay-text {
   position: absolute;
